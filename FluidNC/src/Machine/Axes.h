@@ -29,8 +29,12 @@ namespace Machine {
 
         static AxisMask homingMask;
 
+        static bool disabled;
+
         Pin _sharedStepperDisable;
         Pin _sharedStepperReset;
+
+        uint32_t _homing_runs = 2;  // Number of Approach/Pulloff cycles
 
         inline char axisName(int index) { return index < MAX_N_AXIS ? _names[index] : '?'; }  // returns axis letter
 
@@ -87,4 +91,4 @@ namespace Machine {
         ~Axes();
     };
 }
-extern EnumItem axisType[];
+extern const EnumItem axisType[];
